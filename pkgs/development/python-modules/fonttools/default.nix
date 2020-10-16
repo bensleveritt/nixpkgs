@@ -15,6 +15,7 @@
 , pytest
 , pytest-randomly
 , glibcLocales
+, stdenv
 }:
 
 buildPythonPackage rec {
@@ -38,7 +39,7 @@ buildPythonPackage rec {
     # etree extra
     lxml
     # ufo extra
-    fs
+  ] ++ lib.optional (!stdenv.isDarwin) [ fs ] [
     # woff extra
     brotlipy
     zopfli
